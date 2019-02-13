@@ -8,8 +8,8 @@ metadata:
 spec:
   output:
     to:
-      kind: DockerImage
-      name: 'apachetest:latest'
+      kind: ImageStreamTag
+      name: 'apachetest:1'
   source:
     dockerfile: "FROM centos:7\nRUN yum install -y httpd" 
     git:

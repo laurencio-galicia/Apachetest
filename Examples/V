@@ -1,0 +1,80 @@
+apiVersion: build.openshift.io/v1
+kind: Build
+metadata:
+  annotations:
+    openshift.io/build-config.name: apachetest-v7
+    openshift.io/build.number: '1'
+    openshift.io/build.pod-name: apachetest-v7-1-build
+  creationTimestamp: '2019-02-13T23:06:15Z'
+  labels:
+    buildconfig: apachetest-v7
+    name: apache
+    openshift.io/build-config.name: apachetest-v7
+    openshift.io/build.start-policy: Serial
+  name: apachetest-v7-1
+  namespace: ctin-lga-apa-a001
+  ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: apachetest-v7
+      uid: f17263ce-2fe3-11e9-8f01-005056a42dbf
+  resourceVersion: '10898016'
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/ctin-lga-apa-a001/builds/apachetest-v7-1
+  uid: f6911c7c-2fe3-11e9-8f01-005056a42dbf
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: DockerImage
+      name: 'apachetest:latest'
+  postCommit: {}
+  resources: {}
+  revision:
+    git:
+      author:
+        email: lauren@gmail.com
+        name: el-laure5
+      commit: 36c29e83390fbe698667fe767e67ec418316e832
+      committer:
+        email: lauren@gmail.com
+        name: el-laure5
+      message: Add examples
+    type: Git
+  serviceAccount: builder
+  source:
+    git:
+      ref: master
+      uri: 'git://github.com/laurencio-galicia/Apachetest.git'
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: 'centos:7'
+    type: Docker
+  triggeredBy:
+    - message: Manually triggered
+status:
+  cancelled: true
+  completionTimestamp: '2019-02-13T23:07:52Z'
+  config:
+    kind: BuildConfig
+    name: apachetest-v7
+    namespace: ctin-lga-apa-a001
+  duration: 97000000000
+  message: The build was cancelled by the user.
+  output: {}
+  outputDockerImageReference: 'apachetest:latest'
+  phase: Cancelled
+  reason: CancelledBuild
+  stages:
+    - durationMilliseconds: 563
+      name: FetchInputs
+      startTime: '2019-02-13T23:06:21Z'
+      steps:
+        - durationMilliseconds: 563
+          name: FetchGitSource
+          startTime: '2019-02-13T23:06:21Z'
+  startTimestamp: '2019-02-13T23:06:15Z'

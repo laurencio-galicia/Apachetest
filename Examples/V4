@@ -1,0 +1,37 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: '2019-02-13T23:06:06Z'
+  labels:
+    name: apache
+  name: apachetest-v7
+  namespace: ctin-lga-apa-a001
+  resourceVersion: '10898389'
+  selfLink: >-
+    /apis/build.openshift.io/v1/namespaces/ctin-lga-apa-a001/buildconfigs/apachetest-v7
+  uid: f17263ce-2fe3-11e9-8f01-005056a42dbf
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: DockerImage
+      name: 'apachetest:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'git://github.com/laurencio-galicia/Apachetest.git'
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: 'centos:7'
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers: []
+status:
+  lastVersion: 2
