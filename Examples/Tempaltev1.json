@@ -1,0 +1,46 @@
+ #NOTAS 
+https://docs.openshift.com/container-platform/3.9/dev_guide/builds/build_inputs.html#source-code
+http://v1.uncontained.io/playbooks/app_dev/builds.html#docker-build
+
+
+
+ {
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "openldap",
+    "creationTimestamp": null,
+    "labels": {
+      "name": "openldap"
+    }
+  },
+  "spec": {
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "git://github.com/openshift/origin.git", 
+        "ref": "master" 
+      },
+      "contextDir": "images/openldap" 
+    },
+    "strategy": {
+      "type": "Docker",
+      "dockerStrategy": {
+        "from": {
+          "kind": "ImageStreamTag", 
+          "name": "openldap:latest"
+        }
+      }
+    },
+    "output": {
+      "to": {
+        "kind": "ImageStreamTag",
+        "name": "openldap-testenv:latest" 
+      }
+    },
+    "resources": {}
+  },
+  "status": {
+    "lastVersion": 0
+  }
+}

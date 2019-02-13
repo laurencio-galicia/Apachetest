@@ -1,0 +1,29 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: null
+  labels:
+    name: apache
+  name: apachetest
+spec:
+  output:
+    to:
+      kind: DockerImage
+      name: 'apachetest:latest'
+  postCommit: {}
+  resources: {}
+  source:
+    dockerfile: "FROM centos:7\nRUN yum install -y httpd" 
+    git:
+      ref: master
+      uri: 'git://github.com/laurencio-galicia/Apachetest.git'
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: 'centos:7'
+    type: Source
+  triggers: []
+status:
+  lastVersion: 0
